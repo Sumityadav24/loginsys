@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<meta name="Description" content="Enter your description here"/>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.1.0/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+<link rel="stylesheet" href="assets/css/style.css">
+<title> 
+{% block title %}
+    Home
+{% endblock title %}
+    </title>
+</head>
+<body>
+<!-- Nav tabs -->
+{% block msg %}
+
+{% endblock msg %}
+<ul class="nav navbar navbar-light bg-dark" id="navId">
+    <li class="nav-item">
+        <a href="{% url 'home' %} " class="nav-link active">Home</a>
+    </li>
+    <li class="nav-item">
+        <a href="{% url 'signup' %}" class="nav-link">Sign Up</a>
+    </li>
+    <li class="nav-item">
+        <a href="{% url 'signin' %}" class="nav-link">Sign In</a>
+    </li>
+</ul>
+<div class="container m-3">
+    
+
+    <h3>Hare Krishna Welcome To eLogin Auhentication System</h3>
+    <div class="row">
+        {% if user.is_authenticated %}
+        <h3>Hello {{fn}}</h3>
+        {% if messages %}
+    {% for msg  in messages %}
+    <p>Message: {{msg}}</p>
+    {% endfor %}
+{% endif %}
+        {% endif %}
+        <div class="col-sm-6">
+            <div class="form-group bg-dark text-white">
+                <form action="/signup/" class="m-2 " method="post">
+                    {% csrf_token %}
+                <label for="username"> Username<i class="fa fa-user-circle-o" aria-hidden="true"></i></label>
+                <input type="text" class="form-control" id="username" name="usr" placehoder="Username" required>
+                <label for="fname">First name</label>
+                <input type="text" class="form-control" id="fname" name="fn" placehoder="First Name" required>
+                <label for="lname">Last name</label>
+                <input type="text" class="form-control" id="lname" name="ln" placehoder="Last Name" required>
+                <label for="email">Email</label>
+                <input type="email" class="form-control" id="email" name="email" placehoder="Email" required>
+                <label for="Password">Password</label>
+                <input type="password" class="form-control" id="Password" name="pass" placehoder="Password" required>
+                <label for="Confirm Password">Confirm Password</label>
+                <input type="password" class="form-control" id="Confirm Password" name="cpass"placehoder="Confirm Password" required>
+                <button type="submit" class="btn btn-success my-4">Sign Up</button>
+            </form>
+            </div>
+        </div>
+    </div> 
+<div class="container m-5">
+<a  href="{% url 'signup' %}" class="btn btn-primary">Sign Up</a>
+<a  href="{% url 'signin' %}" class="btn btn-primary">Sign In</a>
+<a class="btn btn-warning"href="{% url 'signout' %}" >Sign Out</a>
+</div>
+</div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/2.9.2/umd/popper.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.1.0/js/bootstrap.min.js"></script>
+</body>
+</html>

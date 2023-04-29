@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<meta name="Description" content="Enter your description here"/>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.1.0/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+<link rel="stylesheet" href="assets/css/style.css">
+<title> 
+{% block title %}
+    Home
+{% endblock title %}
+    </title>
+</head>
+<body>
+<!-- Nav tabs -->
+{% block msg %}
+
+{% endblock msg %}
+
+<div class="container m-3">
+    {% if messages %}
+    {% for msg  in messages %}
+    <p>Message: {{msg}}</p>
+    {% endfor %}
+{% endif %}
+
+    <h3>Hare Krishna Welcome To eLogin Auhentication System</h3>
+    <div class="row">
+        {% if user.is_authenticated %}
+        <h3>Hello {{fn}}</h3>
+        
+<div class="container m-5">
+<a class="btn btn-warning"href="{% url 'signout' %}" >Sign Out</a>
+</div>
+{% else %}
+<div class="container m-5">
+    <a  href="{% url 'signup' %}" class="btn btn-primary">Sign Up</a>
+    <a  href="{% url 'signin' %}" class="btn btn-primary">Sign In</a>
+</div>
+{% endif %}
+</div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/2.9.2/umd/popper.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.1.0/js/bootstrap.min.js"></script>
+</body>
+</html>

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<meta name="Description" content="Enter your description here"/>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.1.0/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+<link rel="stylesheet" href="assets/css/style.css">
+<title>Sign In</title>
+</head>
+<body>
+    
+    <div class="container m-5">
+
+{% if messages %}
+    {% for msg  in messages %}
+    <p>Message: {{msg}}</p>
+    {% endfor %}
+{% endif %}
+    
+
+<h3>Hare Krishna Welcome To eLogin Auhentication System</h3>
+    <div class="row">
+        <div class="col-sm-6">
+            <div class="form-group bg-dark text-white">
+                <form action="/signin/" class="m-2 " method="post">
+                    {% csrf_token %}
+                <label for="username"> Username<i class="fa fa-user-circle-o" aria-hidden="true"></i></label>
+                <input type="text" class="form-control" id="username" name="usr" placehoder="Username" required>
+
+                <label for="Password">Password</label>
+                <input type="password" class="form-control" id="Password" name="pass" placehoder="Enter your Password" required>
+                
+                <button type="submit" class="btn btn-success my-4">Sign In</button>
+            </form>
+            </div>
+        </div>
+    </div> 
+    </div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/2.9.2/umd/popper.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.1.0/js/bootstrap.min.js"></script>
+</body>
+</html>
